@@ -1,0 +1,15 @@
+package net.phutee.data.domain;
+
+public enum Division {
+
+    ENGLISH_PREMIERSHIP,
+    SCOTTISH_PREMIERSHIP,
+    SCOTTISH_CHAMPIONSHIP,
+    GERMAN_BUNDESLIGA,
+    FRENCH_LIGUE1,
+    SPANISH_PRIMERA,
+    DUTCH_EREDIVISE,
+    PORTUGUESE_LIGA,
+    SWISS_SUPER_LEAGUE
+    
+}

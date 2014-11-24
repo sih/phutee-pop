@@ -13,16 +13,7 @@ public class Team {
     private String points;
     private String form;
     
-    
-    public Team(String name, String played, String goalDiff, String points, String form) {
-	super();
-	this.name = name;
-	this.played = played;
-	this.goalDiff = goalDiff;
-	this.points = points;
-	this.form = form;
-    }
-    
+
     public Team(String name) {
 	super();
 	this.name = name;
