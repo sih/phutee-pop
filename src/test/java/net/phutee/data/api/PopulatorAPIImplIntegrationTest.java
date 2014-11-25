@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-import net.phutee.data.domain.Division;
+import net.phutee.data.domain.*;
 
 import org.junit.*;
 
@@ -36,6 +36,11 @@ public class PopulatorAPIImplIntegrationTest {
 	List<Object> results = api.getTeamsForDivision(Division.ENGLISH_PREMIERSHIP);
 	assertNotNull(results);	
 	assertEquals(20,results.size());
+	
+	for (Object o : results) {
+	    Team t = (Team)o;
+	    System.out.println(t.toJson());
+	}
     }
 
 }

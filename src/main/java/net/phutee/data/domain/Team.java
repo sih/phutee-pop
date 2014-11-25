@@ -1,5 +1,7 @@
 package net.phutee.data.domain;
 
+import com.google.gson.Gson;
+
 /**
  * Basic container object to populate weekly stats
  * 
@@ -21,6 +23,11 @@ public class Team {
     @Override
     public String toString() {
 	return this.toCsv();
+    }
+    
+    public String toJson() {
+	Gson g = new Gson();
+	return g.toJson(this);
     }
 
     public String toCsv() {

@@ -22,7 +22,7 @@ public class JsoupParser {
      */
     public JsoupParser cook(final String url, JsoupRecipe recipe)
 	    throws Exception {
-	// check no GIGO
+	// check no GIGO	
 	if (url != null && recipe != null) {
 	    // either first time round or dodgy URL
 	    if (null == data) {

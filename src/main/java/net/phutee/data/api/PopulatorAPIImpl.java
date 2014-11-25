@@ -23,7 +23,7 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 	
 	String englishPremTeams = new String(urlsByDivision.get(Division.ENGLISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
 	String scottishPremTeams = new String(urlsByDivision.get(Division.SCOTTISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
-	String scottishChampTeams = new String(urlsByDivision.get(Division.SCOTTISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
+	String scottishChampTeams = new String(urlsByDivision.get(Division.SCOTTISH_CHAMPIONSHIP)+"-"+StattoRecipes.TEAMS);
 	
 	recipesByUrlAndData = new HashMap<String,JsoupRecipe>();
 	recipesByUrlAndData.put(englishPremTeams, new StattoRecipes.TeamRecipe());
@@ -48,8 +48,6 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 	if (url != null) {
 	    String urlByDataKey = new String(url+"-"+StattoRecipes.TEAMS);
 	    JsoupRecipe recipe = recipesByUrlAndData.get(urlByDataKey);
-	    System.out.println(url);
-	    System.out.println(recipe);
 	    try {
 		// cook it
 		Map<String, List<Object>> results = 

@@ -38,17 +38,68 @@ public class TeamTest {
 
 	String csv = fullTeam.toCsv();
 	StringBuilder expected = new StringBuilder();
-	expected.append(TEAM_NAME);
-	expected.append(",");
-	expected.append(PLAYED);
-	expected.append(",");
-	expected.append(GD);
-	expected.append(",");
-	expected.append(POINTS);
-	expected.append(",");
-	expected.append(FORM);
+	expected.append(TEAM_NAME)
+	.append(",")
+	.append(PLAYED)
+	.append(",")
+	.append(GD)
+	.append(",")
+	.append(POINTS)
+	.append(",")
+	.append(FORM);
 	
 	assertEquals(expected.toString(),csv);
     
     }
+    
+    @Test
+    public void testToJsonFullObject() {
+	StringBuilder expected = new StringBuilder();
+	expected.append("{")
+	.append("\"name\":")
+	.append("\"")
+	.append(TEAM_NAME)
+	.append("\"")	
+	.append(",")
+	.append("\"played\":")
+	.append("\"")
+	.append(PLAYED)
+	.append("\"")	
+	.append(",")	
+	.append("\"goalDiff\":")
+	.append("\"")
+	.append(GD)
+	.append("\"")	
+	.append(",")
+	.append("\"points\":")
+	.append("\"")
+	.append(POINTS)
+	.append("\"")	
+	.append(",")	
+	.append("\"form\":")
+	.append("\"")
+	.append(FORM)
+	.append("\"")
+	.append("}");	
+	
+	
+	assertEquals(expected.toString(),fullTeam.toJson());
+    }
+    
+    
+    @Test
+    public void testToJsonNameOnly() {
+	StringBuilder expected = new StringBuilder();
+	expected.append("{")
+	.append("\"name\":")
+	.append("\"")
+	.append(TEAM_NAME)
+	.append("\"")	
+
+	.append("}");	
+	
+	
+	assertEquals(expected.toString(),minimalTeam.toJson());
+    }
+    
 }
