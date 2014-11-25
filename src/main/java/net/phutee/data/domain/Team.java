@@ -1,8 +1,8 @@
 package net.phutee.data.domain;
 
-
 /**
  * Basic container object to populate weekly stats
+ * 
  * @author sid
  */
 public class Team {
@@ -12,7 +12,6 @@ public class Team {
     private String goalDiff;
     private String points;
     private String form;
-    
 
     public Team(String name) {
 	super();
@@ -21,11 +20,21 @@ public class Team {
 
     @Override
     public String toString() {
+	return this.toCsv();
+    }
+
+    public String toCsv() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("Team [name=").append(name).append(", played=")
-		.append(played).append(", goalDiff=").append(goalDiff)
-		.append(", points=").append(points).append(", form=")
-		.append(form).append("]");
+	builder.append(name);
+	builder.append(",");
+	if (played != null) builder.append(played);
+	builder.append(",");
+	if (goalDiff != null) builder.append(goalDiff);
+	builder.append(",");
+	if (points != null) builder.append(points);
+	builder.append(",");
+	if (form != null) builder.append(form);
+
 	return builder.toString();
     }
 
@@ -36,7 +45,7 @@ public class Team {
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	return result;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
 	if (this == obj)
@@ -56,45 +65,43 @@ public class Team {
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public String getPlayed() {
-        return played;
+	return played;
     }
 
     public void setPlayed(String played) {
-        this.played = played;
+	this.played = played;
     }
 
     public String getGoalDiff() {
-        return goalDiff;
+	return goalDiff;
     }
 
     public void setGoalDiff(String goalDiff) {
-        this.goalDiff = goalDiff;
+	this.goalDiff = goalDiff;
     }
 
     public String getPoints() {
-        return points;
+	return points;
     }
 
     public void setPoints(String points) {
-        this.points = points;
+	this.points = points;
     }
 
     public String getForm() {
-        return form;
+	return form;
     }
 
     public void setForm(String form) {
-        this.form = form;
+	this.form = form;
     }
-    
-    
-    
+
 }

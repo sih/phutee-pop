@@ -7,7 +7,8 @@ import net.phutee.data.domain.Division;
 public class PopulatorAPIImpl implements PopulatorAPI {
     
     Map<Division,String> urlsByDivision;
-    Map<Map<String,String>, JsoupRecipe> recipesByUrlAndData;
+    Map<String, JsoupRecipe> recipesByUrlAndData;
+ 
     
     JsoupParser parser;
     
@@ -20,16 +21,11 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 
 	// TODO - initialize recipesByUrlAndData through config
 	
-	Map<String,String> englishPremTeams = new HashMap<String,String>();
-	englishPremTeams.put(urlsByDivision.get(Division.ENGLISH_PREMIERSHIP), TEAM_KEY);
+	String englishPremTeams = new String(urlsByDivision.get(Division.ENGLISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
+	String scottishPremTeams = new String(urlsByDivision.get(Division.SCOTTISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
+	String scottishChampTeams = new String(urlsByDivision.get(Division.SCOTTISH_PREMIERSHIP)+"-"+StattoRecipes.TEAMS);
 	
-	Map<String,String> scottishPremTeams = new HashMap<String,String>();
-	englishPremTeams.put(urlsByDivision.get(Division.SCOTTISH_PREMIERSHIP), TEAM_KEY);
-	
-	Map<String,String> scottishChampTeams = new HashMap<String,String>();
-	englishPremTeams.put(urlsByDivision.get(Division.SCOTTISH_CHAMPIONSHIP), TEAM_KEY);
-	
-	recipesByUrlAndData = new HashMap<Map<String,String>,JsoupRecipe>();
+	recipesByUrlAndData = new HashMap<String,JsoupRecipe>();
 	recipesByUrlAndData.put(englishPremTeams, new StattoRecipes.TeamRecipe());
 	recipesByUrlAndData.put(scottishPremTeams, new StattoRecipes.TeamRecipe());
 	recipesByUrlAndData.put(scottishChampTeams, new StattoRecipes.TeamRecipe());
@@ -50,10 +46,10 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 	
 	String url = urlsByDivision.get(division);
 	if (url != null) {
-	    Map<String,String> urlByDataKey = new HashMap<String,String>();
-	    urlByDataKey.put(url, TEAM_KEY);
+	    String urlByDataKey = new String(url+"-"+StattoRecipes.TEAMS);
 	    JsoupRecipe recipe = recipesByUrlAndData.get(urlByDataKey);
-	    
+	    System.out.println(url);
+	    System.out.println(recipe);
 	    try {
 		// cook it
 		Map<String, List<Object>> results = 
@@ -61,7 +57,7 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 			  .cook(url, recipe)
 			  .getResults();
 		
-		teams = results.get(TEAM_KEY);
+		teams = results.get(StattoRecipes.TEAMS);
 
 	    }
 	    catch (Exception e) {
