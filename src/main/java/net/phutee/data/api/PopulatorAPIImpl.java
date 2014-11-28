@@ -35,8 +35,13 @@ public class PopulatorAPIImpl implements PopulatorAPI {
 
     @Override
     public Map<String, List<Object>> getAllTeamsByDivision() {
-	// TODO Auto-generated method stub
-	return null;
+	Map<String,List<Object>> results = new HashMap<String,List<Object>>();
+	// try all divisions in the enum
+	for (Division division : Division.values()) {
+	    results.put(division.name(), this.getTeamsForDivision(division));
+	}
+	
+	return results;
     }
 
     @Override
@@ -73,7 +78,5 @@ public class PopulatorAPIImpl implements PopulatorAPI {
     public void setUrlsByDivision(Map<Division, String> urlsByDivision) {
         this.urlsByDivision = urlsByDivision;
     }
-    
-    
 
 }
